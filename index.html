@@ -14,6 +14,9 @@
     <h1>Otis's Favorite Minecraft Servers</h1>
 </div>
 
+
+
+
 <script src="https://mcapi.us/scripts/minecraft.js"></script>
 <div class="content" id="tos">
     <div id="bg" class="bg">
@@ -31,17 +34,33 @@
         <h4>Minecraft Version: 1.7.10</h4>
         <h4>Players: <span class="playersharda"></span>/<span class="playersMaxharda"></span></h4>
     </div>
+
+    <div id="bgqc" class="bgqc">
+        <img id="imgqc" src="">
+        <h4> Quackcraft Test Server </h4>
+        <h4>Status: <span class="server-onlineqc"></span></h4>
+        <h4>Minecraft Version: <span class="server-versionqc"></span></h4>
+        <h4>Players: <span class="playersqc"></span>/<span class="playersMaxqc"></span></h4>
+    </div>
 </div>
 
 
 <script>
-    //Tos
+
+
+
+
+
+   //Tos
     MinecraftAPI.getServerStatus('lotr.g.akliz.net', {
         port: 25565
     }, function (err, status) {
         if (err) {
             return document.querySelector('.content').innerHTML = 'Error loading status';
         }
+        ///TIME
+         updatedString= status.last_updated;
+        ///Other STuff
         var bg = document.getElementById("bg")
         document.querySelector('.server-online').innerHTML = status.online ? 'Online' : 'Offline';
         document.getElementById('img').src = status.favicon
@@ -52,6 +71,7 @@
 
 
     });
+    ///hArda
     MinecraftAPI.getServerStatus("148.251.40.254", {
         port: 25652
     }, function (err, status) {
@@ -67,6 +87,28 @@
 
 
     });
+    //QC Os
+    MinecraftAPI.getServerStatus("quackcraft.beastmc.com", {
+        port: 25565
+    }, function (err, status) {
+        if (err) {
+            return document.querySelector('.content').innerHTML = 'Error loading status';
+        }
+        var bg = document.getElementById("bgqc")
+        document.querySelector('.server-onlineqc').innerHTML = status.online ? 'Online' : 'Offline';
+        document.getElementById('imgqc').src = status.favicon
+        document.getElementById('bgqc').style.backgroundColor = status.online ? bg.backgroundColor ="yellowgreen" : bg.backgroundColor ="darkred";
+        document.querySelector('.playersqc').innerHTML = status.players.now;
+        document.querySelector('.playersMaxqc').innerHTML = status.players.max;
+        document.querySelector('.server-versionqc').innerHTML = status.server.name;
+
+
+    });
+
+
+
+
+
 
 
 </script>
