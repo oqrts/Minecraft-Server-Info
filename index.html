@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="icon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+    <title>Otis's Favorite Minecraft Servers</title>
+
+</head>
+
+<body>
+<div class="info">
+    <h1>Otis's Favorite Minecraft Servers</h1>
+</div>
+
+<script src="https://mcapi.us/scripts/minecraft.js"></script>
+<div class="content" id="tos">
+    <div id="bg" class="bg">
+        <img id="img" src="">
+        <h4> Lord of the Rings Mod - Official server </h4>
+        <h4>Status: <span class="server-online"></span></h4>
+        <h4>Minecraft Version: <span class="server-version"></span></h4>
+        <h4>Players: <span class="players"></span>/<span class="playersMax"></span></h4>
+    </div>
+
+    <div id="bgharda" class="bgharda">
+        <img id="imgharda" src="">
+        <h4> Its's An Even hArda World </h4>
+        <h4>Status: <span class="server-onlineharda"></span></h4>
+        <h4>Minecraft Version: 1.7.10</h4>
+        <h4>Players: <span class="playersharda"></span>/<span class="playersMaxharda"></span></h4>
+    </div>
+</div>
+
+
+<script>
+    //Tos
+    MinecraftAPI.getServerStatus('lotr.g.akliz.net', {
+        port: 25565
+    }, function (err, status) {
+        if (err) {
+            return document.querySelector('.content').innerHTML = 'Error loading status';
+        }
+        var bg = document.getElementById("bg")
+        document.querySelector('.server-online').innerHTML = status.online ? 'Online' : 'Offline';
+        document.getElementById('img').src = status.favicon
+        document.getElementById('bg').style.backgroundColor = status.online ? bg.backgroundColor ="yellowgreen" : bg.backgroundColor ="darkred";
+        document.querySelector('.players').innerHTML = status.players.now;
+        document.querySelector('.playersMax').innerHTML = status.players.max;
+        document.querySelector('.server-version').innerHTML = status.server.name;
+
+
+    });
+    MinecraftAPI.getServerStatus("148.251.40.254", {
+        port: 25652
+    }, function (err, status) {
+        if (err) {
+            return document.querySelector('.content').innerHTML = 'Error loading status';
+        }
+        var bg = document.getElementById("bgharda")
+        document.querySelector('.server-onlineharda').innerHTML = status.online ? 'Online' : 'Offline';
+        document.getElementById('imgharda').src = status.favicon
+        document.getElementById('bgharda').style.backgroundColor = status.online ? bg.backgroundColor ="yellowgreen" : bg.backgroundColor ="darkred";
+        document.querySelector('.playersharda').innerHTML = status.players.now;
+        document.querySelector('.playersMaxharda').innerHTML = status.players.max;
+
+
+    });
+
+
+</script>
+
+
+
+
+
+<div class="devider"></div>
+<div class="bottom">
+    <h5>Page made By <a href="https://github.com/OtisGoodman">Otis_Goodman</a> </h5>
+    <h5>Vew The Src  <a href="https://github.com/OtisGoodman">Here</a> </h5>
+    <h5>This Page Is Licenced Under The <a href="licence">GNU Public Licence</a> </h5>
+
+
+</div>
+</body>
+
+</html>

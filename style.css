@@ -1,0 +1,77 @@
+
+body{
+    background-color:#2a5833;
+}
+
+h1{
+    font-family: 'Charm', cursive;
+   color: darkblue;
+    font-size: 40px;
+}
+.info{
+    background-color: goldenrod;
+    border: 2px dotted black;
+    text-align: center;
+    margin: auto;
+}
+.bottom{
+
+    background-color: #669e66;
+    text-align: center;
+    margin: auto;
+    bottom: 0px;
+    padding: 10px;
+    line-height:0.1;
+}
+h5{
+    color: dimgrey;
+    text-decoration: none;
+    font-size: 10px;
+}
+.devider{
+    padding-bottom: 66px;
+}
+#devidercontact{
+    padding-bottom: 536px;
+
+}
+.content{
+    padding-top: 150px;
+    text-align: center;
+    width:865px;
+    margin:auto;
+    display:block;
+}
+.bg{
+background-color: blueviolet;
+    padding-top: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 2px dotted black;
+    background-size:contain;
+    display:inline-block;
+    line-height:0.5;
+    margin-left: 40px;
+
+}
+
+#bgharda{
+    background-color: blueviolet;
+    padding-top: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 2px dotted black;
+    background-size:contain;
+    display:inline-block;
+    line-height:0.5;
+    margin-left: 40px;
+
+}
+img{
+    width: 130px;
+    height: 130px;
+}
+h4{
+color:#826c35;
+    font-size: 17px;
+}
