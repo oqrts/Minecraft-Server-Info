@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="../icon.ico">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+
     <title>LOTR Mod Official Server</title>
 
 </head>
@@ -24,37 +25,33 @@
         <h4> Lord of the Rings Mod - Official server </h4>
         <h4>Status: <span class="server-online"></span></h4>
         <h4>Minecraft Version: <span class="server-version"></span></h4>
-        <h4>Players: <span class="players"></span>/<span class="playersMax"></span></h4>
+        <h4><a href="playersTos.html">Players</a>: <span class="players"></span>/<span class="playersMax"></span></h4>
     </div>
 </div>
 
 
 <script>
-
-
-
-
-
-    //Tos
-    MinecraftAPI.getServerStatus('lotr.g.akliz.net', {
-        port: 25565
-    }, function (err, status) {
-        if (err) {
-            return document.querySelector('.content').innerHTML = 'Error loading status';
-        }
-        ///TIME
-        updatedString= status.last_updated;
-        ///Other STuff
+    var dynamicUrl = 'https://api.minetools.eu/query/lotr.g.akliz.net/25565';
+    $.getJSON(dynamicUrl, function(data) {
+        document.querySelector('.players').innerHTML = data.Players;
+        document.querySelector('.playersMax').innerHTML = data.MaxPlayers;
         var bg = document.getElementById("bg")
-        document.querySelector('.server-online').innerHTML = status.online ? 'Online' : 'Offline';
-        document.getElementById('img').src = status.favicon
-        document.getElementById('bg').style.backgroundColor = status.online ? bg.backgroundColor ="yellowgreen" : bg.backgroundColor ="darkred";
-        document.querySelector('.players').innerHTML = status.players.now;
-        document.querySelector('.playersMax').innerHTML = status.players.max;
-        document.querySelector('.server-version').innerHTML = status.server.name;
+        document.getElementById('img').src = "https://api.minetools.eu/favicon/lotr.g.akliz.net/25565";
+        document.querySelector('.server-version').innerHTML = data.Version;
 
+        if (data.status.toLowerCase() == "ok"){
+            document.getElementById('bg').style.backgroundColor = bg.backgroundColor ="yellowgreen";
+            document.querySelector('.server-online').innerHTML = 'Online';
 
+        }else {
+            document.getElementById('bg').style.backgroundColor = bg.backgroundColor ="darkred";
+            document.querySelector('.server-online').innerHTML = 'Offline';
+        }
     });
+
+
+
+
 
 
 
