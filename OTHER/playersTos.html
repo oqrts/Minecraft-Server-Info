@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="../icon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>LOTR Mod Official Server</title>
+
+</head>
+
+<body>
+<div class="info">
+    <h1>LOTR Mod Official Server Players</h1>
+</div>
+
+
+
+
+<div class="content" id="tos">
+
+    <div id="servers" class="bg">
+        <h4><a href="../index.html">Back</a></h4>
+
+        <h4 id="playersOnline">Players: <span class="players"></span>/<span class="playersMax"></span></h4>
+        <br>
+        <br>
+        <br>
+        <h4 class="online"></h4>
+    </div>
+</div>
+
+
+<script>
+    var dynamicUrl = 'https://api.minetools.eu/query/lotr.g.akliz.net/25565';
+    $.getJSON(dynamicUrl, function(data) {
+        document.querySelector('.players').innerHTML = data.Players;
+        document.querySelector('.playersMax').innerHTML = data.MaxPlayers;
+        var playerlist = data.Playerlist;
+        for (i=0;i<playerlist.length;i++)
+        {
+            document.querySelector('.online').innerHTML = document.querySelector('.online').innerHTML+playerlist[i]+"<br><br><br>";
+
+
+
+        }
+    });
+
+
+
+
+</script>
+
+
+
+
+
+<div class="devider"></div>
+<div class="bottom">
+    <h5>Page made By <a href="https://github.com/OtisGoodman">Otis_Goodman</a> </h5>
+    <h5>Vew The Src  <a href="https://github.com/OtisGoodman">Here</a> </h5>
+    <h5>This Page Is Licenced Under The <a href="licence">GNU Public Licence</a> </h5>
+
+
+</div>
+</body>
+
+</html>

@@ -41,6 +41,8 @@ h5{
     width:865px;
     margin:auto;
     display:block;
+    text-decoration: none;
+
 }
 .bg{
 background-color: blueviolet;
@@ -52,22 +54,11 @@ background-color: blueviolet;
     display:inline-block;
     line-height:0.5;
     margin-left: 40px;
+    text-decoration: none;
 
 }
 
 #bgharda{
-    background-color: blueviolet;
-    padding-top: 40px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 2px dotted black;
-    background-size:contain;
-    display:inline-block;
-    line-height:0.5;
-    margin-left: 40px;
-
-}
-#bgqc{
     background-color: blueviolet;
     padding-top: 40px;
     padding-left: 5px;
@@ -86,4 +77,14 @@ img{
 h4{
 color:#826c35;
     font-size: 17px;
+    text-decoration: none;
+}
+#servers{
+    background-color: lightgreen;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+#playersOnline{
+    font-size: 27px;
+    color: goldenrod;
 }
