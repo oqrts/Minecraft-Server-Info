@@ -88,3 +88,17 @@ color:#826c35;
     font-size: 27px;
     color: goldenrod;
 }
+#smithing1{
+    background-color: lightgoldenrodyellow;
+    padding-top: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 2px dotted black;
+    background-size:contain;
+    display:inline-block;
+    line-height:0.5;
+    margin-left: 40px;
+}
+#forgeB{
+#position: sticky;
+}
