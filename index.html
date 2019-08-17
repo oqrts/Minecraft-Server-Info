@@ -1,99 +1,109 @@
+<full>
 <html>
-
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="icon.ico">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
-    <title>Otis's Favorite Minecraft Servers</title>
-
+    <link rel="stylesheet" type="text/css" href="buttons.css">
+    <title>Otis' Favorite Minecraft Servers</title>
 </head>
-
 <body>
 <div class="info">
-    <h1>Otis's Favorite Minecraft Servers</h1>
+    <h1>Otis' Favorite Minecraft Servers</h1>
 </div>
-
-
-
-
-<script src="https://mcapi.us/scripts/minecraft.js"></script>
-<div class="content" id="tos">
-    <div id="bg" class="bg">
-        <img id="img" src="">
-        <h4> Lord of the Rings Mod - Official server </h4>
-        <h4>Status: <span class="server-online"></span></h4>
-        <h4>Minecraft Version: <span class="server-version"></span></h4>
-        <h4><a href="OTHER/playersTos.html">Players</a>: <span class="players"></span>/<span class="playersMax"></span></h4>
-    </div
-</div>
-
-
-<script>
-
-
-
-    var dynamicUrl = 'https://api.minetools.eu/query/lotr.g.akliz.net/25565';
+<div class="content" id="div0">
+    <div class="bg" id = "bg0">
+        <h4 id = "serverip0"></h4>
+        <img id="img0" src="">
+        <h4 id = "serverName0"></h4>
+        <h4>Status: <span id="server-online0"></span></h4>
+        <h4>Minecraft Version: <span id="server-version0"></span></h4>
+        <h4><button class="button small green" onclick="players('LOTR Mod: The Official Server','lotr.g.akliz.net',25565)">Players</button>: <span class="players" id = "players0"></span>/<span class="playersMax" id = "playersMax0"></span></h4>
+    </div> 
+    <div class="bg" id = "bg1">
+        <h4 id = "serverip1"></h4>
+        <img id="img1" src="">
+        <h4 id = "serverName1"></h4>
+            <h4>Status: <span id="server-online1"></span></h4>
+            <h4>Minecraft Version: <span id="server-version1"></span></h4>
+            <h4><button class="button small green" onclick="players(`Otis' Siege Server`,`173.236.63.130`,25585)">Players</button>: <span class="players" id = "players1"></span>/<span class="playersMax" id = "playersMax1"></span></h4>
+        </div>
+        <div class="bg" id = "bg2">
+            <h4 id = "serverip2"></h4>
+            <img id="img2" src="https://cdn.glitch.com/b08b14d4-22df-4f78-9051-764caa62fc11%2Fring%20dwarf.png?v=1566066154704">
+            <h4 id = "serverName2"></h4>
+                <h4>Status: <span id="server-online2"></span></h4>
+                <h4>Minecraft Version: <span id="server-version2"></span></h4>
+                <h4><button class="button small green" onclick="players('Dwarf Build Server','dwarfbuild.duckdns.org',25565)">Players</button>: <span class="players" id = "players2"></span>/<span class="playersMax" id = "playersMax2"></span></h4>
+            </div>
+            <div class="bg" id = "bg3">
+                <h4 id = "serverip3"></h4>
+                <img id="img3" src="">
+                <h4 id = "serverName3"></h4>
+                    <h4>Status: <span id="server-online1"></span></h4>
+                    <h4>Minecraft Version: <span id="server-version3"></span></h4>
+                    <h4><button class="button small green" onclick="players('High Elf Build Server','high-elves-of-tos.g.akliz.net',null)">Players</button>: <span class="players" id = "players3"></span>/<span class="playersMax" id = "playersMax3"></span></h4>
+                </div>
+                </div>
+                <script>
+//function For changing the HTML data for the server's numbar to match the server's status             
+function addServer (serverName,serverIp,serverPort,serverNum){
+   var dynamicUrl;   
+//Some servers have problems with port things so if you set it to null no port will be used
+ if (serverPort != null){
+    dynamicUrl = `https://api.minetools.eu/ping/${serverIp}/${serverPort}`;
+    }else{
+        dynamicUrl = `https://api.minetools.eu/ping/${serverIp}`;
+    }
+    //Gets Query Json And Parces
     $.getJSON(dynamicUrl, function(data) {
-        document.querySelector('.players').innerHTML = data.Players;
-        document.querySelector('.playersMax').innerHTML = data.MaxPlayers;
-        var bg = document.getElementById("bg")
-        document.getElementById('img').src = "https://api.minetools.eu/favicon/lotr.g.akliz.net/25565";
-        document.querySelector('.server-version').innerHTML = data.Version;
-
-        if (data.status.toLowerCase() == "ok"){
-            document.getElementById('bg').style.backgroundColor = bg.backgroundColor ="yellowgreen";
-            document.querySelector('.server-online').innerHTML = 'Online';
-
+        var bg = $("#bg"+serverNum)
+        $('#serverip'+serverNum).html(`${serverIp}:${serverPort }`);
+         if (serverNum != 2){
+            document.getElementById('img'+serverNum).src = data.favicon;
+         }
+        if (data.error == "[Errno 111] Connection refused"){
+            document.getElementById('bg'+serverNum).style.backgroundColor = bg.backgroundColor ="darkred";
+            $('#server-online'+serverNum).html('Offline');
+            $('#serverName'+serverNum).html(serverName)
+           $('#players'+serverNum).html(`0`);
+           $('#playersMax'+serverNum).html(`0`);
+          $('#server-version'+serverNum).html("?")
         }else {
-            document.getElementById('bg').style.backgroundColor = bg.backgroundColor ="darkred";
-            document.querySelector('.server-online').innerHTML = 'Offline';
+            document.getElementById('bg'+serverNum).style.backgroundColor = bg.backgroundColor ="yellowgreen";
+            $('#server-online'+serverNum).html('Online');
+            $('#serverName'+serverNum).html(serverName)
+       $('#players'+serverNum).html(data.players.online);
+       $('#playersMax'+serverNum).html(data.players.max);
+       $('#server-version'+serverNum).html(data.version.name)
         }
     });
-
-
-    ///hArda
-
-
-
-
-    MinecraftAPI.getServerStatus("148.251.40.254", {
-        port: 25652
-    }, function (err, status) {
-        if (err) {
-            return document.querySelector('.content').innerHTML = 'Error loading status';
-        }
-        var bg = document.getElementById("bgharda")
-        document.querySelector('.server-onlineharda').innerHTML = status.online ? 'Online' : 'Offline';
-        document.getElementById('imgharda').src = status.favicon
-        document.getElementById('bgharda').style.backgroundColor = status.online ? bg.backgroundColor ="yellowgreen" : bg.backgroundColor ="darkred";
-        document.querySelector('.playersharda').innerHTML = status.players.now;
-        document.querySelector('.playersMaxharda').innerHTML = status.players.max;
-
-
-    });
-
-
-
-
-
-
-
-
+}
+//Place To Call Functions\
+//SERVER NAME,SERVER IP,SERVER PORT,HTML ELEMENT NUM
+addServer("LOTR Mod: The Official Server","lotr.g.akliz.net",25565,"0")
+addServer("Otis' Siege Server","173.236.63.130",25585,"1")
+addServer("Dwarf Build Server","dwarfbuild.duckdns.org",25565,"2")
+addServer("High Elf Build Server","high-elves-of-tos.g.akliz.net",null,"3")
+//function for redirecting to see the server's online players
+function players(serverName,serverIP,serverPort){
+   //gets contents from players.html and replaces evrything in the <full> tag with the html
+    $.get('./players.html', function(data) {
+      //Leaves a snipit of data behind so that our new html file can ping the server
+        $('full').html(data+`<p class = "poof" id = 'port'>${serverPort}</p>
+        <p class = "poof" id = 'ip'>${serverIP}</p>
+        <p class = "poof" id = 'name'>${serverName}</p>`
+        )
+        
+}, 'text');}
 </script>
-
-
-
-
-
 <div class="devider"></div>
 <div class="bottom">
     <h5>Page made By <a href="https://github.com/OtisGoodman">Otis_Goodman</a> </h5>
     <h5>Vew The Src  <a href="OtisGoodman/Mincraft-Server-Info">Here</a> </h5>
     <h5>This Page Is Licenced Under The <a href="licence">GNU Public Licence</a> </h5>
-
-
 </div>
 </body>
-
 </html>
+</full>

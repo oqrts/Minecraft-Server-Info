@@ -1,0 +1,60 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="buttons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="icon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+    <title>Otis' Favorite Minecraft Servers</title>
+</head>
+<script>
+    //Gets info about the server from the snipits left behind from when the html is replaced
+    var port = document.getElementById('port').innerHTML;
+    var ip = document.getElementById('ip').innerHTML;
+    var name = document.getElementById('name').innerHTML;
+    var dynamicUrl;
+    //Works around some servers not having ports
+    if (port == "null"){
+        dynamicUrl = `https://api.mcsrvstat.us/2/${ip}`;
+
+    }else{
+     dynamicUrl = `https://api.mcsrvstat.us/2/${ip}:${port}`;
+    }
+    //Geting server data from json file
+    $.getJSON(dynamicUrl, function(data) {
+        document.querySelector('.players').innerHTML = data.players.online;
+        document.querySelector('.playersMax').innerHTML = data.players.max;
+        var playerlist = data.players.list;
+        for (i=0;i<playerlist.length;i++)
+        {
+            //Lists server's player's names
+            document.querySelector('.online').innerHTML = document.querySelector('.online').innerHTML+playerlist[i]+"<br><br><br>";
+        }
+    });
+</script> 
+<style>
+html {
+    background-color:#2a5833; 
+}
+</style>
+<body>
+<div class="info">
+    <h1>Otis' Favorite Minecraft Servers</h1>
+</div>
+<div class="content" id="tos">
+    <div id="servers" class="bg">
+        <h4><button onclick="location.reload();">Back</button></h4>
+        <h4 id="playersOnline">Players: <span class="players"></span>/<span class="playersMax"></span></h4>
+        <br>
+        <br>
+        <h4 class="online"></h4>
+    </div>
+</div>
+<div class="devider"></div>
+<div class="bottom">
+    <h5>Page made By <a href="https://github.com/OtisGoodman">Otis_Goodman</a> </h5>
+    <h5>Vew The Src  <a href="https://github.com/OtisGoodman">Here</a> </h5>
+    <h5>This Page Is Licenced Under The <a href="licence">GNU Public Licence</a> </h5>
+</div>
+</body>
+</html>

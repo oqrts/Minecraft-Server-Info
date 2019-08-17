@@ -1,6 +1,6 @@
-# Minecraft-Server-Info
+# Minecraft-Server-Info 2 Electric Boogaloo
 A Website That Checks The Status Of My Favorite Mincraft Servers 
-
+UPDATED 8/17/2019
 
 ![STATUS](https://img.shields.io/endpoint.svg?label=Project%20Status%3A&logo=github&style=popout-square&url=https://raw.githubusercontent.com/OtisGoodman/Badge-Controller/master/Minecraft-Server-Info.json)
 

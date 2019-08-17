@@ -1,0 +1,81 @@
+<full>
+        <html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="style.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <link rel="shortcut icon" type="image/x-icon" href="icon.ico">
+            <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="buttons.css">
+            <title>LOTR Mod: The Official Server</title>
+        </head>
+        <body>
+        <div class="info">
+            <h1>LOTR Mod: The Official Server</h1>
+        </div>
+        <div class="content" id="div0">
+            <div class="bg" id = "bg0">
+                <h4 id = "serverip0"></h4>
+                <img id="img0" src="">
+                <h4 id = "serverName0"></h4>
+                <h4>Status: <span id="server-online0"></span></h4>
+                <h4>Minecraft Version: <span id="server-version0"></span></h4>
+                <h4><button class="button small green" onclick="players('LOTR Mod: The Official Server','lotr.g.akliz.net',25565)">Players</button>: <span class="players" id = "players0"></span>/<span class="playersMax" id = "playersMax0"></span></h4>
+            </div> 
+            <script>
+        //function For changing the HTML data for the server's numbar to match the server's status             
+        function addServer (serverName,serverIp,serverPort,serverNum){
+           var dynamicUrl;   
+        //Some servers have problems with port things so if you set it to null no port will be used
+         if (serverPort != null){
+            dynamicUrl = `https://api.minetools.eu/ping/${serverIp}/${serverPort}`;
+            }else{
+                dynamicUrl = `https://api.minetools.eu/ping/${serverIp}`;
+            }
+            //Gets Query Json And Parces
+            $.getJSON(dynamicUrl, function(data) {
+                var bg = $("#bg"+serverNum)
+                $('#serverip'+serverNum).html(`${serverIp}:${serverPort }`);
+                 if (serverNum != 2){
+                    document.getElementById('img'+serverNum).src = data.favicon;
+                 }
+                if (data.error == "[Errno 111] Connection refused"){
+                    document.getElementById('bg'+serverNum).style.backgroundColor = bg.backgroundColor ="darkred";
+                    $('#server-online'+serverNum).html('Offline');
+                    $('#serverName'+serverNum).html(serverName)
+                   $('#players'+serverNum).html(`0`);
+                   $('#playersMax'+serverNum).html(`0`);
+                  $('#server-version'+serverNum).html("?")
+                }else {
+                    document.getElementById('bg'+serverNum).style.backgroundColor = bg.backgroundColor ="yellowgreen";
+                    $('#server-online'+serverNum).html('Online');
+                    $('#serverName'+serverNum).html(serverName)
+               $('#players'+serverNum).html(data.players.online);
+               $('#playersMax'+serverNum).html(data.players.max);
+               $('#server-version'+serverNum).html(data.version.name)
+                }
+            });
+        }
+        //Place To Call Functions
+        //SERVER NAME,SERVER IP,SERVER PORT,HTML ELEMENT NUM
+        addServer("LOTR Mod: The Official Server","lotr.g.akliz.net",25565,"0")
+        //function for redirecting to see the server's online players
+        function players(serverName,serverIP,serverPort){
+           //gets contents from players.html and replaces evrything in the <full> tag with the html
+            $.get('./players.html', function(data) {
+              //Leaves a snipit of data behind so that our new html file can ping the server
+                $('full').html(data+`<p class = "poof" id = 'port'>${serverPort}</p>
+                <p class = "poof" id = 'ip'>${serverIP}</p>
+                <p class = "poof" id = 'name'>${serverName}</p>`
+                )
+                
+        }, 'text');}
+        </script>
+        <div class="devider"></div>
+        <div class="bottom">
+            <h5>Page made By <a href="https://github.com/OtisGoodman">Otis_Goodman</a> </h5>
+            <h5>Vew The Src  <a href="OtisGoodman/Mincraft-Server-Info">Here</a> </h5>
+            <h5>This Page Is Licenced Under The <a href="licence">GNU Public Licence</a> </h5>
+        </div>
+        </body>
+        </html>
+        </full>
