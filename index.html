@@ -43,7 +43,7 @@
                 <h4 id = "serverName3"></h4>
                     <h4>Status: <span id="server-online1"></span></h4>
                     <h4>Minecraft Version: <span id="server-version3"></span></h4>
-                    <h4><button class="button small green" onclick="players('Tempest Pvp Server','tempest.spmc.co',25565)">Players</button>: <span class="players" id = "players3"></span>/<span class="playersMax" id = "playersMax3"></span></h4>
+                    <h4><button class="button small green" onclick="players('Tempest Pvp Server','tempest.spmc.co',null)">Players</button>: <span class="players" id = "players3"></span>/<span class="playersMax" id = "playersMax3"></span></h4>
                 </div>
                 </div>
                 <script>
@@ -85,7 +85,7 @@ function addServer (serverName,serverIp,serverPort,serverNum){
 addServer("LOTR Mod: The Official Server","lotr.g.akliz.net",25565,"0")
 addServer("Otis' Siege Server","LOTRSiege.beastmc.com",25585,"1")
 addServer("Dwarf Build Server","dwarfbuild.duckdns.org",25565,"2")
-addServer("Tempest Pvp Server","tempest.spmc.co",25565,"3")
+addServer("Tempest Pvp Server","tempest.spmc.co",null,"3")
 //function for redirecting to see the server's online players
 function players(serverName,serverIP,serverPort){
    //gets contents from players.html and replaces evrything in the <full> tag with the html
