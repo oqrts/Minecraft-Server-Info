@@ -18,7 +18,7 @@
         <img id="img0" src="">
         <h4 id = "serverName0"></h4>
         <h4>Status: <span id="server-online0"></span></h4>
-        <h4>Minecraft Version: <span id="server-version0"></span></h4>
+        <h4>Minecraft Version: <span id="server-version0">1.7.10</span></h4>
         <h4><button class="button small green" onclick="players('LOTR Mod: The Official Server','lotr.g.akliz.net',25565)">Players</button>: <span class="players" id = "players0"></span>/<span class="playersMax" id = "playersMax0"></span></h4>
     </div> 
     <div class="bg" id = "bg1">
@@ -26,23 +26,23 @@
         <img id="img1" src="">
         <h4 id = "serverName1"></h4>
             <h4>Status: <span id="server-online1"></span></h4>
-            <h4>Minecraft Version: <span id="server-version1"></span></h4>
+            <h4>Minecraft Version: <span id="server-version1">1.7.10</span></h4>
             <h4><button class="button small green" onclick="players(`Otis' Siege Server`,`173.236.63.130`,25585)">Players</button>: <span class="players" id = "players1"></span>/<span class="playersMax" id = "playersMax1"></span></h4>
         </div>
         <div class="bg" id = "bg2">
             <h4 id = "serverip2"></h4>
-            <img id="img2" src="https://cdn.glitch.com/b08b14d4-22df-4f78-9051-764caa62fc11%2Fring%20dwarf.png?v=1566066154704">
+            <img id="img2" src="">
             <h4 id = "serverName2"></h4>
                 <h4>Status: <span id="server-online2"></span></h4>
-                <h4>Minecraft Version: <span id="server-version2"></span></h4>
-                <h4><button class="button small green" onclick="players('Dwarf Build Server','dwarfbuild.duckdns.org',25565)">Players</button>: <span class="players" id = "players2"></span>/<span class="playersMax" id = "playersMax2"></span></h4>
+                <h4>Minecraft Version: <span id="server-version2">1.7.10</span></h4>
+                <h4><button class="button small green" onclick="players('Flames Of Arda','54.39.39.132',25566)">Players</button>: <span class="players" id = "players2"></span>/<span class="playersMax" id = "playersMax2"></span></h4>
             </div>
             <div class="bg" id = "bg3">
                 <h4 id = "serverip3"></h4>
                 <img id="img3" src="">
                 <h4 id = "serverName3"></h4>
                     <h4>Status: <span id="server-online1"></span></h4>
-                    <h4>Minecraft Version: <span id="server-version3"></span></h4>
+                    <h4>Minecraft Version: <span id="server-version3">1.7.10</span></h4>
                     <h4><button class="button small green" onclick="players('LOTR Survival','lotr.mine.bz',25565)">Players</button>: <span class="players" id = "players3"></span>/<span class="playersMax" id = "playersMax3"></span></h4>
                 </div>
                 </div>
@@ -76,7 +76,7 @@ function addServer (serverName,serverIp,serverPort,serverNum){
             $('#serverName'+serverNum).html(serverName)
        $('#players'+serverNum).html(data.players.online);
        $('#playersMax'+serverNum).html(data.players.max);
-       $('#server-version'+serverNum).html(data.version.name)
+      // $('#server-version'+serverNum).html(data.version.name)
         }
     });
 }
@@ -84,7 +84,7 @@ function addServer (serverName,serverIp,serverPort,serverNum){
 //SERVER NAME,SERVER IP,SERVER PORT,HTML ELEMENT NUM
 addServer("LOTR Mod: The Official Server","lotr.g.akliz.net",25565,"0")
 addServer("Otis' Siege Server","LOTRSiege.beastmc.com",25585,"1")
-addServer("Dwarf Build Server","dwarfbuild.duckdns.org",25565,"2")
+addServer("Flames Of Arda","54.39.39.132",25566,"2")
 addServer("LOTR Survival","lotr.mine.bz",25565,"3")
 //function for redirecting to see the server's online players
 function players(serverName,serverIP,serverPort){
@@ -101,8 +101,8 @@ function players(serverName,serverIP,serverPort){
 <div class="devider"></div>
 <div class="bottom">
     <h5>Page made By <a href="https://github.com/OtisGoodman">Otis_Goodman</a> </h5>
-    <h5>Vew The Src  <a href="OtisGoodman/Mincraft-Server-Info">Here</a> </h5>
-    <h5>This Page Is Licenced Under The <a href="licence">GNU Public Licence</a> </h5>
+    <h5>Vew The Src  <a href="https://github.com/OtisGoodman/Minecraft-Server-Info">Here</a> </h5>
+    <h5>This Page Is Licenced Under The <a href="https://raw.githubusercontent.com/OtisGoodman/Minecraft-Server-Info/master/LICENSE">GNU Public Licence</a> </h5>
 </div>
 </body>
 </html>
