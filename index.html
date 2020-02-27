@@ -29,22 +29,15 @@
             <h4>Minecraft Version: <span id="server-version1">1.7.10</span></h4>
             <h4><button class="button small green" onclick="players(`Otis' Siege Server`,`173.236.63.130`,25585)">Players</button>: <span class="players" id = "players1"></span>/<span class="playersMax" id = "playersMax1"></span></h4>
         </div>
-        <div class="bg" id = "bg2">
-            <h4 id = "serverip2"></h4>
-            <img id="img2" src="">
-            <h4 id = "serverName2"></h4>
-                <h4>Status: <span id="server-online2"></span></h4>
-                <h4>Minecraft Version: <span id="server-version2">1.7.10</span></h4>
-                <h4><button class="button small green" onclick="players('Flames Of Arda','54.39.39.132',25566)">Players</button>: <span class="players" id = "players2"></span>/<span class="playersMax" id = "playersMax2"></span></h4>
-            </div>
-            <div class="bg" id = "bg3">
-                <h4 id = "serverip3"></h4>
-                <img id="img3" src="">
-                <h4 id = "serverName3"></h4>
-                    <h4>Status: <span id="server-online1"></span></h4>
-                    <h4>Minecraft Version: <span id="server-version3">1.7.10</span></h4>
-                    <h4><button class="button small green" onclick="players('LOTR Survival','lotr.mine.bz',25565)">Players</button>: <span class="players" id = "players3"></span>/<span class="playersMax" id = "playersMax3"></span></h4>
-                </div>
+    <div class="bg" id = "bg2">
+        <h4 id = "serverip2"></h4>
+        <img id="img2" src="">
+        <h4 id = "serverName2"></h4>
+        <h4>Status: <span id="server-online2"></span></h4>
+        <h4>Minecraft Version: <span id="server-version2">1.7.10</span></h4>
+        <h4><button class="button small green" onclick="players('LOTR Survival','lotr.mine.bz',25565)">Players</button>: <span class="players" id = "players2"></span>/<span class="playersMax" id = "playersMax2"></span></h4>
+    </div>
+
                 </div>
                 <script>
 //function For changing the HTML data for the server's numbar to match the server's status             
@@ -60,9 +53,10 @@ function addServer (serverName,serverIp,serverPort,serverNum){
     $.getJSON(dynamicUrl, function(data) {
         var bg = $("#bg"+serverNum)
         $('#serverip'+serverNum).html(`${serverIp}:${serverPort }`);
-         if (serverNum != 2){
+        //Commented out because this was to fix the dwarf build server and I might need rember how to fix it if we bring it back.
+        //if (serverNum != 2){
             document.getElementById('img'+serverNum).src = data.favicon;
-         }
+         //}
         if (data.error == "[Errno 111] Connection refused"){
             document.getElementById('bg'+serverNum).style.backgroundColor = bg.backgroundColor ="darkred";
             $('#server-online'+serverNum).html('Offline');
@@ -83,9 +77,8 @@ function addServer (serverName,serverIp,serverPort,serverNum){
 //Place To Call Functions\
 //SERVER NAME,SERVER IP,SERVER PORT,HTML ELEMENT NUM
 addServer("LOTR Mod: The Official Server","lotr.g.akliz.net",25565,"0")
-addServer("Otis' Siege Server","LOTRSiege.beastmc.com",25585,"1")
-addServer("Flames Of Arda","54.39.39.132",25566,"2")
-addServer("LOTR Survival","lotr.mine.bz",25565,"3")
+addServer("Otis Siege Server","LOTRSiege.beastmc.com",25585,"1")
+addServer("LOTR Survival","lotr.mine.bz",25565,"2")
 //function for redirecting to see the server's online players
 function players(serverName,serverIP,serverPort){
    //gets contents from players.html and replaces evrything in the <full> tag with the html
